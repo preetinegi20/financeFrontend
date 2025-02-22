@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 function Transaction() {
-  const apiUrl = "http://localhost:3000";
+  const apiUrl =
+    import.meta.env.VITE_BACKEND_API_URL || "http://localhost:3000";
 
   //array of forms
   const [addedTrans, setAddedTrans] = useState([]);

@@ -10,7 +10,9 @@ import {
 } from "recharts";
 
 function CategoryWisePieChart() {
-  const apiUrl = "http://localhost:3000";
+  const apiUrl =
+    import.meta.env.VITE_BACKEND_API_URL || "http://localhost:3000";
+
   const [pieData, setPieData] = useState([]);
 
   useEffect(() => {
@@ -22,7 +24,6 @@ function CategoryWisePieChart() {
       const response = await axios.get(`${apiUrl}/api/transactions`);
       const transactions = response.data.data;
 
-      // Group transactions by category
       const categoryData = transactions.reduce((acc, txn) => {
         const { category, amount } = txn;
         if (acc[category]) {
@@ -32,8 +33,6 @@ function CategoryWisePieChart() {
         }
         return acc;
       }, {});
-
-      // Convert object into an array
       const formattedData = Object.keys(categoryData).map((cat) => ({
         name: cat,
         value: categoryData[cat],
@@ -45,7 +44,6 @@ function CategoryWisePieChart() {
     }
   }
 
-  // Define some colors for the pie slices
   const COLORS = ["#72A0C1", "#F7B801", "#D72638", "#1B9AAA", "#A2D729"];
 
   return (

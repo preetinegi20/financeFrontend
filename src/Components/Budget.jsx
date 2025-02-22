@@ -9,8 +9,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const API_BASE_URL = "http://localhost:3000"; // Adjust this to match your backend URL
-
+const apiUrl = import.meta.env.VITE_BACKEND_API_URL || "http://localhost:3000";
 const BudgetManager = () => {
   const [budgets, setBudgets] = useState({
     Shopping: { limit: 0, spent: 0 },
@@ -27,7 +26,7 @@ const BudgetManager = () => {
 
   const fetchBudget = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/budgets/${month}`);
+      const response = await fetch(`${apiUrl}/api/budgets/${month}`);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -60,7 +59,7 @@ const BudgetManager = () => {
         budgetLimits[category] = values.limit;
       });
 
-      const response = await fetch(`${API_BASE_URL}/api/budgets`, {
+      const response = await fetch(`${apiUrl}/api/budgets`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

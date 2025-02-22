@@ -11,10 +11,10 @@ function Dashboard() {
   }, []);
 
   async function fetchTransactions() {
+    const apiUrl =
+      import.meta.env.VITE_BACKEND_API_URL || "http://localhost:3000";
     try {
-      const response = await axios.get(
-        "http://localhost:3000/api/transactions"
-      );
+      const response = await axios.get(`${apiUrl}/api/transactions`);
       const transactionsData = response.data.data;
 
       const total = transactionsData.reduce(

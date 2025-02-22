@@ -30,7 +30,8 @@ function NewTransaction() {
     return Object.keys(errors).length === 0;
   };
 
-  const apiUrl = "http://localhost:3000";
+  const apiUrl =
+    import.meta.env.VITE_BACKEND_API_URL || "http://localhost:3000";
 
   function handleInp(e) {
     updateVal(e.target.id, e.target.value);

@@ -11,16 +11,15 @@ import {
 
 function MonthlyExpensesChart() {
   const [chartData, setChartData] = useState([]);
-
+  const apiUrl =
+    import.meta.env.VITE_BACKEND_API_URL || "http://localhost:3000";
   useEffect(() => {
     fetchTransactions();
   }, []);
 
   async function fetchTransactions() {
     try {
-      const response = await axios.get(
-        "http://localhost:3000/api/transactions"
-      );
+      const response = await axios.get(`${apiUrl}/api/transactions`);
       const transactions = response.data.data;
 
       // Group transactions by month
