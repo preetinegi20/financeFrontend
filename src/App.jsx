@@ -1,7 +1,7 @@
 import "../src/index.css";
 import React from "react";
 import Transaction from "./Components/Transaction";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Home";
 import BudgetManager from "../src/Components/Budget";
 function App() {

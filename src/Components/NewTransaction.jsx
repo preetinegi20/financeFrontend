@@ -49,7 +49,7 @@ function NewTransaction() {
     setSuccessMessage("");
 
     try {
-      await axios.post(`${apiUrl}/api/`, form, {
+      await axios.post(`${apiUrl}/api`, form, {
         headers: {
           "Content-Type": "application/json",
         },
